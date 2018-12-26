@@ -17,5 +17,32 @@
   </dependencies>
   <build>
     <finalName>001CounterWebApp</finalName>
+
+    <plugins>
+      <!-- deploy to tomcat7 -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <!-- 注意此处的url,它的值tomcat发布应用管理页面地址 -->
+          <url>http://localhost:8080/manager/text</url>
+          <server>tomcat7</server> <!-- 此处的名字必须和maven/conf/setting.xml中配置的ID一致 -->
+          <path>/${project.build.finalName}</path> <!-- 此处的名字是项目发布的工程名 -->
+        </configuration>
+      </plugin>
+      <!-- deploy to tomcat8 -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat8-maven-plugin</artifactId>
+        <version>3.0-r1655215</version>
+        <configuration>
+          <url>http://localhost:8080/manager/text</url>
+          <server>tomcat8</server>
+          <path>/${project.build.finalName}</path>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
+
 </project>
